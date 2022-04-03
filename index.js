@@ -1,90 +1,56 @@
-
-
-
-
-
 const choices = ["rock", "paper", "scissors"];
 const winners = [];
+let playerWins = 0;
+let botWins = 0;
+let ties = 0 ;
+let myScore = document.querySelector('.myScore');
+let botScore = document.querySelector('.botScore');
 
-function game() {
-  // play the game
-  // play five rounds
-  // console based
-  
-  for(let i = 0; i < 5;i++) {
-    playRound();
-    
-  }
-  logWinner();
+function playGame(){
+  let playerWins = 0;
+let botWins = 0;
+let ties = 0 
+
+console.log('game over')
 }
 
-function playRound() {
-  const playersChoice = playerChoice();
+function playRound(choice){
+
   const computersChoice = computerChoice();
-//   console.log(computersChoice, playersChoice);
-  const winner = checkWinner(computersChoice, playersChoice);
-  winners.push(winner);
-}
-
-// function playerChoice() {
-//   let input = prompt(`Type rock, paper or scissors`);
-//   while (input == null) {
-//     input = prompt(`Type rock, paper or scissors`);
-//   }
-//   input = input.toLowerCase();
-//   let check = validateInput(input);
-//   while (check == false) {
-//     input = prompt("Wrong Selection, Type rock, paper or scissors");
-//     while (check == null) {
-//       input = prompt("Wrong Selection, Type rock, paper or scissors");
-//     }
-//     input = input.toLowerCase();
-//     check = validateInput(input);
-//   }
-//   return input;
-// }
-
-// playerInput.addEventListener('click', (e) => {
-//     console.log(e.target.value)
-// })
-
-function playerInput(){
-    let myChoice= document.querySelectorAll('btn')
-    console.log(myChoice.value)
+  console.log(`bot chose ${computersChoice} you chose ${choice} .`)
+  botScore.innerHTML = botWins;
+  myScore.innerHTML = playerWins;
+  console.log(checkWinner(computersChoice,choice))
+  if(botWins >= 3 || playerWins >= 3 ){
+    console.log(`gameOver`)
+    alert('Game over Start a new game')
+    botWins = 0 ;
+    playerWins = 0;
+  }
+   
 }
 
 function computerChoice() {
   return choices[Math.floor(Math.random() * choices.length)];
 }
 
-function validateInput(choice) {
-  if (choices.includes(choice)) {
-    return true;
-  } else {
-    return false;
-  }
-}
 
 function checkWinner(botsChoice, yourChoice) {
   if (botsChoice == yourChoice) {
-    return (`Its a tie`);
+    ++ties
+    return (`Its a tie ${ties}`);
   } else if (
     (botsChoice == "rock" && yourChoice == "scissors") ||
     (botsChoice == "paper" && yourChoice == "rock") ||
     (botsChoice == "scissors" && yourChoice == "paper")
   ) {
-    return (`Computer Won`);
-  } else {
-    return (`Player Won`);
-  }
-}
-function logWinner(){
+    ++botWins
+    return (`Bot Won ${botWins}`);
    
-    let playerWins = winners.filter((item) => item == `Player Won`  ).length;
-    let computerWins = winners.filter((item) => item == `Computer Won`).length;
-    let ties = winners.filter((item) => item == `Its a tie`).length;
-    console.log(`Bot has won ${computerWins} games`)
-    console.log(`Player has won ${playerWins} games`)
-    console.log(`You have tied ${ties} games`)
+  } 
+    ++playerWins
+    return (`Player Won ${playerWins}`);
+  
 }
-game();
+
+

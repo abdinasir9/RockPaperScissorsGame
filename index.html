@@ -30,21 +30,26 @@
             <div class="col-lg-12 d-flex justify-content-around d-flex flex-column border border-end">
                 <div class="h1 display d-flex justify-content-around">Player</div>
                 <div class="container p-2 d-flex justify-content-around">
-                    <button type="button"  value="rock" onClick="playerInput()" class="btn btn-outline-primary btn-lg">Rock</button>
-                    <button type="button" value="paper" onClick="playerInput()" class="btn btn-outline-primary btn-lg">Paper</button>
-                    <button type="button" value="scissors" onClick="playerInput()" class="btn btn-outline-primary btn-lg">Scissors</button>
+                    <button type="button"  value="rock" onClick="playRound('rock')" class="btn btn-outline-primary btn-lg">Rock</button>
+                    <button type="button" value="paper" onClick="playRound('paper')" class="btn btn-outline-primary btn-lg">Paper</button>
+                    <button type="button" value="scissors" onClick="playRound('scissors')" class="btn btn-outline-primary btn-lg">Scissors</button>
                 </div>
             </div>
-        </div>
+        </div>  
         <!-- this will display the winner/score  -->
         <div class="container">
-            <h3 class="d-flex justify-content-around">Score</h3>
+            <h3 class="d-flex justify-content-around">Ties</h3>
             <div class="container row">
                 <div class="col-lg-6 d-flex justify-content-around">
-                    <h4>Player Score</h4>
+                    <h4>Player Score
+                        <span class="myScore">0 <span>
+                    </h4>
+                    
                 </div>
                 <div class="col-lg-6 d-flex justify-content-around">
-                    <h4>Bot Score</h4>
+                    <h4>Bot Score
+                        <span class="botScore">0<span>
+                    </h4>
                 </div>
             </div>
         </div>
