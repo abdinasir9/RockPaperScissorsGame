@@ -5,6 +5,7 @@ let botWins = 0;
 let ties = 0 ;
 let myScore = document.querySelector('.myScore');
 let botScore = document.querySelector('.botScore');
+let endGame = document.querySelector('.endGame')
 
 function playGame(){
   let playerWins = 0;
@@ -18,14 +19,23 @@ function playRound(choice){
 
   const computersChoice = computerChoice();
   console.log(`bot chose ${computersChoice} you chose ${choice} .`)
-  botScore.innerHTML = botWins;
-  myScore.innerHTML = playerWins;
   console.log(checkWinner(computersChoice,choice))
+  botScore.innerHTML = botWins;
+  myScore.innerHTML = playerWins; 
   if(botWins >= 3 || playerWins >= 3 ){
-    console.log(`gameOver`)
-    alert('Game over Start a new game')
-    botWins = 0 ;
+    if(botWins >= 3){
+      endGame.innerHTML = "Game Over! you Lose!"
+      botWins = 0 ;
     playerWins = 0;
+    ties = 0
+    
+    }
+    else if(playerWins >= 3){
+      endGame.innerHTML = "Game Over! you Won!"
+      botWins = 0 ;
+      playerWins = 0;
+      ties = 0;
+    }
   }
    
 }
